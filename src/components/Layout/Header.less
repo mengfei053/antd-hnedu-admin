@@ -1,3 +1,31 @@
+.logo {
+  width: 200px;
+  height: 92px;
+  background: #333;
+  border-radius: 0;
+  float: left;
+  background-image: url(../../assets/logo.png);
+}
 
-.normal {
+:global(.header .ant-menu){
+  width:70%;
+  padding-left: 200px;
+}
+
+:global(.header .ant-menu .ant-menu-item-selected a){
+  border-bottom: 6px solid #09488a;
+}
+:global(.header .ant-menu .ant-menu-item){
+  padding:0;
+  width:10%;
+}
+:global(.header .ant-menu-dark .ant-menu-item a) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  i {
+
+  }
+  span {
+  }
 }

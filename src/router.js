@@ -1,16 +1,48 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { Router, Route, Switch ,Redirect } from 'dva/router';
 import IndexPage from './routes/IndexPage';
-import GroupIntro from './routes/SiderBar/GroupIntro/GroupIntro'
-import ProductServer from './routes/SiderBar/ProductServer/ProductServer'
+import dynamic from 'dva/dynamic'
 
-function RouterConfig({ history }) {
+
+
+function RouterConfig({ history , app }) {
+
+  const routes = [
+    {
+      path:'/dashboard',
+      component:()=>import('./components/Pages/Dashboard/Dashboard')
+    }, {
+      path:'/content',
+      component:()=>import('./components/Pages/Content/Content')
+    }, {
+      path:'/column',
+      component:()=>import('./components/Pages/Column/Column')
+    },
+
+  ]
+
+
   return (
     <Router history={history}>
       <Switch>
-        <Route path="/" exact component={IndexPage} />
-        <Route path="/groupintro" exact component={GroupIntro}/>
-        <Route path="/product/:name" exact component={ProductServer}/>
+        <Route exact path="/" render={() => (<Redirect to="/dashboard" />)}/>
+        {
+          /*<Route path="/" exact component={IndexPage} />*/
+          routes.map(function (item,key) {
+            <Route
+              key={key}
+              exact
+              path={item.path}
+              component={dynamic({
+                app,
+
+              })}
+            />
+          })
+
+        }
+
+
       </Switch>
     </Router>
   );

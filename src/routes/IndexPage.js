@@ -5,9 +5,12 @@ import MainLayout from '../components/Layout/MainLayout'
 import { withRouter } from 'dva/router'
 
 function IndexPage({location,loading,app}) {
-  console.log(loading);
+  const mainLayoutProps = {
+    app,
+    loading
+  }
   return (
-    <MainLayout>
+    <MainLayout {...mainLayoutProps}>
       <div className={styles.normal}>
         <h1 className={styles.title}>Yay! Welcome to dva!</h1>
         <div className={styles.welcome} />

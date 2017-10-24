@@ -1,7 +1,7 @@
 const Mock = require('mockjs')
 const config = require('../init.config');
 
-const data = [
+const menus = [
   {
     id:1,
     name:'首页',
@@ -64,6 +64,6 @@ const data = [
 
 module.exports = {
   [`GET ${config.apiprefix}/menus`](req,res){
-    res.status(200).json(data)
+    res.status(200).json(menus)
   }
 }

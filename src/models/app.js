@@ -1,5 +1,5 @@
 import queryString from 'query-string'
-import { query } from '../services/example'
+import * as menusQuery  from '../services/menus'
 
 export default {
 
@@ -9,8 +9,9 @@ export default {
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
       return history.listen((location,search)=>{
+        dispatch({type:'query'})
         if(location.pathname === '/groupintro'){
-          dispatch({type:'query'})
+
         }
       })
     },
@@ -21,8 +22,9 @@ export default {
       yield put({ type: 'save' });
     },
     * query({ payload }, { call, put}){
-      const data = yield call( query )
-      console.log(data);
+      const menus = yield call(menusQuery.query);
+      console.log(menus);
+      yield put({type:'save',payload:{menus}})
     }
   },
 
