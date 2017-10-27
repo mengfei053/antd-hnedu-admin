@@ -2,6 +2,7 @@ import dva from 'dva';
 import createHistory from 'history/createBrowserHistory'
 import createLoading from 'dva-loading'
 import {message} from 'antd'
+import 'babel-polyfill'
 import './index.css';
 const ERROR_MSG_DURATION = 3; // 3 秒
 
@@ -16,8 +17,7 @@ const app = dva({
   }
 });
 
-// 2. Plugins
-// app.use({});
+
 
 // 3. Model
 app.model(require('./models/app'));

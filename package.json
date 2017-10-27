@@ -12,16 +12,21 @@
   "dependencies": {
     "antd": "^2.13.6",
     "babel-plugin-import": "^1.6.2",
+    "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.9.2",
     "cross-env": "^5.1.0",
     "dva": "^2.0.4",
     "dva-loading": "^1.0.3",
     "history": "^4.7.2",
     "mockjs": "^1.0.1-beta3",
+    "path-to-regexp": "^2.1.0",
     "prop-types": "^15.6.0",
     "query-string": "^5.0.0",
     "react": "^15.4.0",
-    "react-dom": "^15.4.0"
+    "react-countup": "^2.3.0",
+    "react-dom": "^15.4.0",
+    "react-transition-group": "^2.2.1",
+    "recharts": "^1.0.0-beta.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",

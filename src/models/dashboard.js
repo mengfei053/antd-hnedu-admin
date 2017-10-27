@@ -1,15 +1,22 @@
-import queryString from 'query-string'
-import * as menusQuery  from '../services/menus'
+/**
+ * Created by MHF on 2017/10/25.
+ */
+import ueryString from 'query-string'
+import * as request  from '../services/request'
+import { api } from '../../init.config'
 
 export default {
 
-  namespace: 'app',
+  namespace: 'dashboard',
   state: {},
 
   subscriptions: {
     setup({ dispatch, history }) {  // eslint-disable-line
       return history.listen((location,search)=>{
         dispatch({type:'query'})
+        if(location.pathname === '/dashboard'){
+
+        }
       })
     },
   },
@@ -19,8 +26,9 @@ export default {
       yield put({ type: 'save' });
     },
     * query({ payload }, { call, put}){
-      const menus = yield call(menusQuery.query);
-      yield put({type:'save',payload:{menus}})
+      const { data } = yield call(request.query,api.dashboard);
+      const { sidebar } = yield data
+      yield put({type:'save',payload:{sidebar}})
     }
   },
 

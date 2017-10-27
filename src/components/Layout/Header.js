@@ -1,20 +1,30 @@
 import React from 'react';
 import styles from './Header.less';
-import Link from 'dva/router'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd'
-const { Header, Content, Sider } = Layout
+import {Layout, Menu, Icon, Avatar, Badge, Button} from 'antd'
+const {Header} = Layout
+import pathToRegexp from 'path-to-regexp'
 
 
-function Head({app,loading}) {
+function Head({app, loading, location}) {
+  let selectKey = 1;
+
   function getHeaderMenu(app) {
-    console.log(loading);
-    if(app.menus){
-      const MenuItems = app.menus.data.map(function (item,index,arr) {
+    if (app.menus) {
+      //选中设置
+      for (let item of app.menus.data) {
+        if (item.route == location.pathname) {
+          selectKey = item.id
+        }
+      }
+
+
+      const MenuItems = app.menus.data.map(function (item, index, arr) {
         return (
-          <Menu.Item key={index+1} >
+          <Menu.Item key={index + 1}>
             <a href={item.route}>
-              <Icon type={item.icon} style={{marginRight:0,fontSize:'24px',marginTop:'25px',marginBottom:'8px'}}/>
-              <span style={{lineHeight:1,marginBottom:'16px'}}>{item.name}</span>
+              <Icon type={item.icon}
+                    style={{marginRight: 0, fontSize: '24px', marginTop: '25px', marginBottom: '8px'}}/>
+              <span style={{lineHeight: 1, marginBottom: '16px'}}>{item.name}</span>
             </a>
           </Menu.Item>
         )
@@ -23,20 +33,30 @@ function Head({app,loading}) {
     }
 
   }
+
   const headerMenu = getHeaderMenu(app);
 
   return (
-    <Header className="header" style={{height:'92px',lineHeight:1,padding:0,borderBottom:'2px solid #09488a'}}>
+    <Header className="header">
       <div className={styles.logo}></div>
       <Menu
         theme="dark"
         mode="horizontal"
-        selectedKeys={['1']}
+        selectedKeys={[`${selectKey}`]}
         defaultSelectedKeys={['1']}
-        style={{ height: '92px',textAlign:'center',borderBottom:'2px solid #09488a' }}
       >
         {headerMenu}
       </Menu>
+      <div className={styles.user}>
+        <div>
+          <Avatar className={styles.useravatar} size="large" icon="user"/>
+          <a href="#" className={styles.username}>您好，admin</a>
+        </div>
+        <Badge count={5}>
+          <Button type="primary" icon="bell" className={styles.headerbutton}></Button>
+        </Badge>
+        <Button type="primary" icon="poweroff" className={styles.headerbutton}></Button>
+      </div>
     </Header>
   );
 }

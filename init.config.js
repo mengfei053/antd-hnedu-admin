@@ -8,6 +8,16 @@ module.exports = {
   logo:'/logo.png',
   apiprefix:APIV1,
   api:{
-    menus:`${APIV1}/menus`
+    menus:`${APIV1}/menus`,
+    dashboard:`${APIV1}/dashboard`,
+    contents:`${APIV1}/contents`,
+    column:`${APIV1}/column`,
+    configpage:`${APIV1}/configpage`,
+    datacenter:`${APIV1}/datacenter`,
+    expansion:`${APIV1}/expansion`,
+    maintain:`${APIV1}/maintain`,
+    resources:`${APIV1}/resources`,
+    teplpages:`${APIV1}/teplpages`,
+    userpages:`${APIV1}/userpages`,
   }
 }

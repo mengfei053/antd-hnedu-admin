@@ -27,37 +27,37 @@ const menus = [
   {
     id:5,
     name:'用户',
-    route:'/users',
+    route:'/userpages',
     icon:'user'
   },
   {
     id:6,
     name:'拓展',
-    route:'/continuation',
+    route:'/expansion',
     icon:'share-alt'
   },
   {
     id:7,
     name:'数据',
-    route:'/databases',
+    route:'/datacenter',
     icon:'bar-chart'
   },
   {
     id:8,
     name:'模板',
-    route:'/template',
+    route:'/teplpages',
     icon:'credit-card'
   },
   {
     id:9,
     name:'资源',
-    route:'/users',
+    route:'/resources',
     icon:'rocket'
   },
   {
     id:10,
     name:'配置',
-    route:'/setup',
+    route:'/configpages',
     icon:'setting'
   },
 ]
