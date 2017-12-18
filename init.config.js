@@ -2,7 +2,7 @@ const APIV1 = '/api/v1'
 const APIV2 = '/api/v2'
 
 module.exports = {
-  name:'后台管理系统',
+  name:'后台管理系统测试pull request',
   prefix:'hndeuAdmin',
   footerText:'',
   logo:'/logo.png',
